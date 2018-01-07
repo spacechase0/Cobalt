@@ -1,13 +1,13 @@
-﻿using Harmony;
+﻿using System.Collections.Generic;
+using Harmony;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.TerrainFeatures;
 using StardewValley.Tools;
-using System.Collections.Generic;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
     internal class CobaltInjector : IAssetEditor
     {
@@ -19,7 +19,7 @@ namespace Cobalt
         public void Edit<T>(IAssetData asset)
         {
             if ( asset.AssetNameEquals( "TileSheets\\tools" ) )
-                asset.AsImage().PatchImage(Mod.instance.Helper.Content.Load<Texture2D>("cobalt-tools.png"), null, null, PatchMode.Overlay);
+                asset.AsImage().PatchImage(ModEntry.instance.Helper.Content.Load<Texture2D>("cobalt-tools.png"), null, null, PatchMode.Overlay);
         }
     }
 

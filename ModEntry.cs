@@ -2,12 +2,13 @@
 using StardewModdingAPI;
 using StardewValley;
 using System.Reflection;
+using Cobalt.Framework;
 
 namespace Cobalt
 {
-    internal class Mod : StardewModdingAPI.Mod
+    internal class ModEntry : Mod
     {
-        public static Mod instance;
+        public static ModEntry instance;
 
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="helper">Provides simplified APIs for writing mods.</param>

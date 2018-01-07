@@ -1,11 +1,11 @@
-﻿using CustomElementHandler;
+﻿using System.Collections.Generic;
+using CustomElementHandler;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.TerrainFeatures;
-using System.Collections.Generic;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
     internal class CobaltSprinklerObject : StardewValley.Object, ISaveElement
     {
@@ -17,7 +17,7 @@ namespace Cobalt
         public const int CATEGORY = CraftingCategory;
         public const int EDIBILITY = -300;
 
-        private Texture2D icon = Mod.instance.Helper.Content.Load<Texture2D>("cobalt-sprinkler.png");
+        private Texture2D icon = ModEntry.instance.Helper.Content.Load<Texture2D>("cobalt-sprinkler.png");
 
         public CobaltSprinklerObject()
         {

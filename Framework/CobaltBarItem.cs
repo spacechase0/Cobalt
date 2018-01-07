@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using SObject = StardewValley.Object;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
     internal class CobaltBarItem
     {
@@ -13,6 +13,6 @@ namespace Cobalt
         public const int CATEGORY = SObject.metalResources;
         public const int EDIBILITY = -300;
 
-        private Texture2D icon = Mod.instance.Helper.Content.Load<Texture2D>("items/cobalt-bar.png");
+        private Texture2D icon = ModEntry.instance.Helper.Content.Load<Texture2D>("items/cobalt-bar.png");
     }
 }

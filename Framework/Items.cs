@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Specialized;
+using Microsoft.Xna.Framework;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Tools;
-using System;
-using System.Collections.Specialized;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
     internal static class Items
     {

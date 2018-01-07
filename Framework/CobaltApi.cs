@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
     /// <summary>The API which provides access to Cobalt for other mods.</summary>
     internal class CobaltApi : ICobaltApi
