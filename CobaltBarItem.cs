@@ -1,13 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StardewValley.BellsAndWhistles;
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
 using SObject = StardewValley.Object;
-using StardewValley;
 
 namespace Cobalt
 {
-    public class CobaltBarItem
+    internal class CobaltBarItem
     {
         public const int INDEX = 900;
         public const string NAME = "Cobalt Bar";

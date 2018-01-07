@@ -1,15 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using StardewModdingAPI.Events;
 using StardewValley;
-using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace Cobalt
 {
-    static class Items
+    internal static class Items
     {
         internal static void init()
         {
@@ -18,25 +16,25 @@ namespace Cobalt
             GameEvents.OneSecondTick += periodicUpdate;
         }
 
-        private static void periodicUpdate( object sender, EventArgs args )
+        private static void periodicUpdate(object sender, EventArgs args)
         {
-            if ( Game1.player.CurrentTool != null && Game1.player.CurrentTool is WateringCan wcan )
+            if (Game1.player.CurrentTool != null && Game1.player.CurrentTool is WateringCan wcan)
             {
                 if (wcan.upgradeLevel == 5 && wcan.WaterLeft == wcan.waterCanMax)
                     wcan.waterCanMax = wcan.WaterLeft = 150;
             }
 
-            foreach ( var item in Game1.player.items )
+            foreach (var item in Game1.player.items)
             {
                 if (item == null)
                     continue;
 
-                if ( item is Tool tool && tool.upgradeLevel >= 4 )
+                if (item is Tool tool && tool.upgradeLevel >= 4)
                 {
                     if (!Game1.player.knowsRecipe("Cobalt Bar"))
                         Game1.player.craftingRecipes.Add("Cobalt Bar", 0);
                 }
-                if ( item is StardewValley.Object && item.parentSheetIndex == 645 && Game1.player.knowsRecipe( "Cobalt Bar" ) )
+                if (item is StardewValley.Object && item.parentSheetIndex == 645 && Game1.player.knowsRecipe("Cobalt Bar"))
                 {
                     if (!Game1.player.knowsRecipe("Cobalt Sprinkler"))
                         Game1.player.craftingRecipes.Add("Cobalt Sprinkler", 0);
@@ -46,7 +44,7 @@ namespace Cobalt
 
         private static void replaceModItems(object sender, EventArgsInventoryChanged args)
         {
-            for ( int i = 0; i < args.Inventory.Count; ++i )
+            for (int i = 0; i < args.Inventory.Count; ++i)
             {
                 var item = args.Inventory[i];
                 if (item == null)
@@ -62,8 +60,8 @@ namespace Cobalt
                 args.Inventory[i].Stack = item.Stack;
             }
         }
-        
-        private static void watchCurrentLocation_1( object sender, EventArgsCurrentLocationChanged args)
+
+        private static void watchCurrentLocation_1(object sender, EventArgsCurrentLocationChanged args)
         {
             if (args.PriorLocation != null)
                 args.PriorLocation.objects.CollectionChanged -= watchCurrentLocation_2;
@@ -71,11 +69,11 @@ namespace Cobalt
                 args.NewLocation.objects.CollectionChanged += watchCurrentLocation_2;
         }
 
-        private static void watchCurrentLocation_2( object sender, NotifyCollectionChangedEventArgs args )
+        private static void watchCurrentLocation_2(object sender, NotifyCollectionChangedEventArgs args)
         {
-            if ( args.Action == NotifyCollectionChangedAction.Add )
+            if (args.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach ( var key_ in args.NewItems )
+                foreach (var key_ in args.NewItems)
                 {
                     var key = (Vector2)key_;
                     var obj = Game1.currentLocation.objects[key];

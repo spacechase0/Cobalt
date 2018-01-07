@@ -3,7 +3,7 @@ using System;
 
 namespace Cobalt
 {
-    class Log
+    internal class Log
     {
         public static void trace(String str)
         {

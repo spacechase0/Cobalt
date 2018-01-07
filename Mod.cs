@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Harmony;
 using StardewModdingAPI;
-using Harmony;
-using System.Reflection;
 using StardewValley;
+using System.Reflection;
 
 namespace Cobalt
 {
-    public class Mod : StardewModdingAPI.Mod
+    internal class Mod : StardewModdingAPI.Mod
     {
         public static Mod instance;
 
