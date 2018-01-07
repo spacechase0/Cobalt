@@ -46,8 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CobaltApi.cs" />
     <Compile Include="CobaltBarItem.cs" />
     <Compile Include="CobaltSprinklerObject.cs" />
+    <Compile Include="ICobaltApi.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Mod.cs" />
