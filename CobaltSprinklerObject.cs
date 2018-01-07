@@ -68,7 +68,7 @@ namespace Cobalt
         public override void DayUpdate(GameLocation location)
         {
             this.health = 10;
-            if (!Game1.isRaining || !location.isOutdoors)
+            //if (!Game1.isRaining || !location.isOutdoors)
             {
                     for (int index1 = (int)this.tileLocation.X - 3; (double)index1 <= (double)this.tileLocation.X + 3.0; ++index1)
                     {
