@@ -1,7 +1,7 @@
 {
   "Name": "Cobalt",
   "Author": "spacechase0",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "Description": "Adds cobalt ingots, tools, and sprinklers",
   "UniqueID": "spacechase0.Cobalt",
   "EntryDll": "Cobalt.dll",
