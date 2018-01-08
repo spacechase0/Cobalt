@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 namespace Cobalt.Framework
 {
     /// <summary>The API which provides access to Cobalt for other mods.</summary>
-    internal class CobaltApi : ICobaltApi
+    public class CobaltApi : ICobaltApi
     {
         /*********
         ** Public methods
