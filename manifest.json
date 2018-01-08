@@ -1,15 +1,9 @@
 {
   "Name": "Cobalt",
   "Author": "spacechase0",
-  "Version": {
-    "MajorVersion": 1,
-    "MinorVersion": 0,
-    "PatchVersion": 0,
-    "Build": ""
-  },
+  "Version": "1.0.0",
   "Description": "Adds cobalt ingots, tools, and sprinklers",
   "UniqueID": "spacechase0.Cobalt",
-  "PerSaveConfigs": false,
   "EntryDll": "Cobalt.dll",
   "UpdateKeys": [ "Nexus:1723" ],
   "Dependencies": [
@@ -18,3 +12,4 @@
     }
   ]
 }
+
