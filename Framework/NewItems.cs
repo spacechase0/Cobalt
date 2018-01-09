@@ -1,16 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
-    class ItemInjector : IAssetEditor
+    internal class ItemInjector : IAssetEditor
     {
         public bool CanEdit<T>(IAssetInfo asset)
         {
@@ -29,12 +25,12 @@ namespace Cobalt
             {
                 // Make the original image larger - 1000 should be good? My stuff starts at 900.
                 var oldTex = asset.AsImage().Data;
-                Texture2D newTex = new Texture2D(Game1.graphics.GraphicsDevice, oldTex.Width, Math.Max( oldTex.Height, 1000 / 24 * 16 ));
+                Texture2D newTex = new Texture2D(Game1.graphics.GraphicsDevice, oldTex.Width, Math.Max(oldTex.Height, 1000 / 24 * 16));
                 asset.ReplaceWith(newTex);
                 asset.AsImage().PatchImage(oldTex);
-                
-                asset.AsImage().PatchImage(Mod.instance.Helper.Content.Load<Texture2D>("cobalt-bar.png"), null, imageRect(CobaltBarItem.INDEX));
-                asset.AsImage().PatchImage(Mod.instance.Helper.Content.Load<Texture2D>("cobalt-sprinkler.png"), null, imageRect(CobaltSprinklerObject.INDEX));
+
+                asset.AsImage().PatchImage(ModEntry.instance.Helper.Content.Load<Texture2D>("cobalt-bar.png"), null, imageRect(CobaltBarItem.INDEX));
+                asset.AsImage().PatchImage(ModEntry.instance.Helper.Content.Load<Texture2D>("cobalt-sprinkler.png"), null, imageRect(CobaltSprinklerObject.INDEX));
             }
             else if (asset.AssetNameEquals("Data\\ObjectInformation"))
             {
@@ -43,12 +39,12 @@ namespace Cobalt
             }
             else if (asset.AssetNameEquals("Data\\CraftingRecipes"))
             {
-                asset.AsDictionary<string, string>().Data.Add("Cobalt Bar", $"74 1 337 10/Home/{CobaltBarItem.INDEX} 3/false/null" );
+                asset.AsDictionary<string, string>().Data.Add("Cobalt Bar", $"74 1 337 10/Home/{CobaltBarItem.INDEX} 3/false/null");
                 asset.AsDictionary<string, string>().Data.Add("Cobalt Sprinkler", $"645 1 {CobaltBarItem.INDEX} 1/Home/{CobaltSprinklerObject.INDEX} 1/false/null");
             }
         }
-        
-        private Rectangle imageRect( int index )
+
+        private Rectangle imageRect(int index)
         {
             return new Rectangle(index % 24 * 16, index / 24 * 16, 16, 16);
         }

@@ -46,13 +46,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CobaltBarItem.cs" />
-    <Compile Include="CobaltSprinklerObject.cs" />
-    <Compile Include="Items.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="Mod.cs" />
-    <Compile Include="NewItems.cs" />
-    <Compile Include="NewTool.cs" />
+    <Compile Include="Framework\CobaltApi.cs" />
+    <Compile Include="Framework\CobaltBarItem.cs" />
+    <Compile Include="Framework\CobaltSprinklerObject.cs" />
+    <Compile Include="Framework\Items.cs" />
+    <Compile Include="Framework\Log.cs" />
+    <Compile Include="Framework\NewItems.cs" />
+    <Compile Include="Framework\NewTool.cs" />
+    <Compile Include="ICobaltApi.cs" />
+    <Compile Include="ModEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
