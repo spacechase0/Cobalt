@@ -1,13 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StardewValley.BellsAndWhistles;
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
 using SObject = StardewValley.Object;
-using StardewValley;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
-    public class CobaltBarItem
+    internal class CobaltBarItem
     {
         public const int INDEX = 900;
         public const string NAME = "Cobalt Bar";
@@ -17,6 +13,6 @@ namespace Cobalt
         public const int CATEGORY = SObject.metalResources;
         public const int EDIBILITY = -300;
 
-        private Texture2D icon = Mod.instance.Helper.Content.Load<Texture2D>("items/cobalt-bar.png");
+        private Texture2D icon = ModEntry.instance.Helper.Content.Load<Texture2D>("items/cobalt-bar.png");
     }
 }

@@ -1,15 +1,15 @@
-﻿using Harmony;
+﻿using System.Collections.Generic;
+using Harmony;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.TerrainFeatures;
 using StardewValley.Tools;
-using System.Collections.Generic;
 
-namespace Cobalt
+namespace Cobalt.Framework
 {
-    class CobaltInjector : IAssetEditor
+    internal class CobaltInjector : IAssetEditor
     {
         public bool CanEdit<T>(IAssetInfo asset)
         {
@@ -19,12 +19,12 @@ namespace Cobalt
         public void Edit<T>(IAssetData asset)
         {
             if ( asset.AssetNameEquals( "TileSheets\\tools" ) )
-                asset.AsImage().PatchImage(Mod.instance.Helper.Content.Load<Texture2D>("cobalt-tools.png"), null, null, PatchMode.Overlay);
+                asset.AsImage().PatchImage(ModEntry.instance.Helper.Content.Load<Texture2D>("cobalt-tools.png"), null, null, PatchMode.Overlay);
         }
     }
 
     [HarmonyPatch(typeof(Utility), "priceForToolUpgradeLevel")]
-    static class CobaltPriceHook
+    internal static class CobaltPriceHook
     {
         public static void Postfix(int level, ref int __result)
         {
@@ -34,7 +34,7 @@ namespace Cobalt
     }
 
     [HarmonyPatch(typeof(Utility), "getBlacksmithUpgradeStock")]
-    static class CobaltUpgradeStockHook
+    internal static class CobaltUpgradeStockHook
     {
         public static void Postfix( StardewValley.Farmer who, Dictionary<Item, int[]> __result )
         {
@@ -73,7 +73,7 @@ namespace Cobalt
     }
 
     [HarmonyPatch(typeof(Tree), "performToolAction")]
-    static class CobaltTreeFix
+    internal static class CobaltTreeFix
     {
         public static bool Prefix( Tree __instance, Tool t, int explosion )
         {
@@ -91,7 +91,7 @@ namespace Cobalt
     }
 
     [HarmonyPatch(typeof(FruitTree), "performToolAction")]
-    static class CobaltFruitTreeFix
+    internal static class CobaltFruitTreeFix
     {
         public static bool Prefix(Tree __instance, Tool t, int explosion)
         {
@@ -109,7 +109,7 @@ namespace Cobalt
     }
     
     [HarmonyPatch(typeof(StardewValley.Object), "performToolAction")]
-    static class CobaltObjectFix
+    internal static class CobaltObjectFix
     {
         public static bool Prefix(StardewValley.Object __instance, Tool t)
         {
@@ -126,7 +126,7 @@ namespace Cobalt
     }
     
     [HarmonyPatch(typeof(Quartz), "performToolAction")]
-    static class CobaltQuartzFix
+    internal static class CobaltQuartzFix
     {
         private static bool wasCobalt = false;
 
@@ -163,7 +163,7 @@ namespace Cobalt
     }*/
 
     [HarmonyPatch(typeof(Tool), "get_DisplayName")]
-    static class CobaltDisplayNameHook
+    internal static class CobaltDisplayNameHook
     {
         public static bool Prefix( Tool __instance, ref string __result )
         {
@@ -177,7 +177,7 @@ namespace Cobalt
     }
 
     [HarmonyPatch(typeof(Tool), "get_Name")]
-    static class CobaltNameHook
+    internal static class CobaltNameHook
     {
         public static bool Prefix(Tool __instance, ref string __result)
         {
@@ -191,7 +191,7 @@ namespace Cobalt
     }
 
     [HarmonyPatch(typeof(Tool), "tilesAffected")]
-    static class Tier5TilesHook
+    internal static class Tier5TilesHook
     {
         public static void Postfix(Tool __instance, List<Vector2> __result, Vector2 tileLocation, int power, StardewValley.Farmer who)
         {
