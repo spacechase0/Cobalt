@@ -52,6 +52,7 @@ namespace Cobalt.Framework
             edibility = EDIBILITY;
             canBeSetDown = true;
             canBeGrabbed = true; // ?
+            tileLocation = ( ( StardewValley.Object ) replacement ).tileLocation;
         }
 
         public override Rectangle getBoundingBox(Vector2 tileLocation)
