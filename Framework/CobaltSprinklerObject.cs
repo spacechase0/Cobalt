@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CustomElementHandler;
+using PyTK.CustomElementHandler;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
@@ -63,6 +63,7 @@ namespace Cobalt.Framework
 
         public override void DayUpdate(GameLocation location)
         {
+            Log.trace("Sprinkling");
             this.health = 10;
             //if (!Game1.isRaining || !location.isOutdoors)
             {

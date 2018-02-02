@@ -10,6 +10,12 @@ namespace Cobalt.Framework
         ** Public methods
         *********/
         /// <summary>Get the cobalt sprinkler's object ID.</summary>
+        public int GetBarId()
+        {
+            return CobaltBarItem.INDEX;
+        }
+
+        /// <summary>Get the cobalt sprinkler's object ID.</summary>
         public int GetSprinklerId()
         {
             return CobaltSprinklerObject.INDEX;

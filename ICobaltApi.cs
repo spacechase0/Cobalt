@@ -9,6 +9,9 @@ namespace Cobalt
         /*********
         ** Public methods
         *********/
+        /// <summary>Get the cobalt bar's object ID.</summary>
+        int GetBarId();
+
         /// <summary>Get the cobalt sprinkler's object ID.</summary>
         int GetSprinklerId();
 
