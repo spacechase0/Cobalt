@@ -119,12 +119,62 @@ namespace Cobalt.Framework
                     if (__instance.parentSheetIndex == 12 && t.upgradeLevel == 1 || (__instance.parentSheetIndex == 12 || __instance.parentSheetIndex == 14) && t.upgradeLevel == 0)
                     { }
                     else
-                        __instance.minutesUntilReady -= 6;
+                        __instance.minutesUntilReady -= __instance.minutesUntilReady;
             }
             return true;
         }
     }
-    
+
+    [HarmonyPatch(typeof(StardewValley.Tools.Pickaxe), "DoFunction")]
+    internal static class CobaltPickaxeFix
+    {
+        public static bool Prefix(StardewValley.Tools.Pickaxe __instance, GameLocation location, int x, int y, int power, StardewValley.Farmer who)
+        {
+            if (__instance.upgradeLevel == 5)
+            {
+                int num1 = x / Game1.tileSize;
+                int num2 = y / Game1.tileSize;
+                Vector2 index = new Vector2((float)num1, (float)num2);
+                StardewValley.Object @object = (StardewValley.Object)null;
+                location.Objects.TryGetValue(index, out @object);
+                if (@object == null)
+                {
+                    if (who.FacingDirection == 0 || who.FacingDirection == 2)
+                    {
+                        num1 = (x - 8) / Game1.tileSize;
+                        location.Objects.TryGetValue(new Vector2((float)num1, (float)num2), out @object);
+                        if (@object == null)
+                        {
+                            num1 = (x + 8) / Game1.tileSize;
+                            location.Objects.TryGetValue(new Vector2((float)num1, (float)num2), out @object);
+                        }
+                    }
+                    else
+                    {
+                        num2 = (y + 8) / Game1.tileSize;
+                        location.Objects.TryGetValue(new Vector2((float)num1, (float)num2), out @object);
+                        if (@object == null)
+                        {
+                            num2 = (y - 8) / Game1.tileSize;
+                            location.Objects.TryGetValue(new Vector2((float)num1, (float)num2), out @object);
+                        }
+                    }
+                    x = num1 * Game1.tileSize;
+                    y = num2 * Game1.tileSize;
+                }
+                index = new Vector2((float)num1, (float)num2);
+                if (@object != null)
+                {
+                    if (@object.Name.Equals("Stone"))
+                    {
+                        @object.minutesUntilReady -= @object.minutesUntilReady;
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
     [HarmonyPatch(typeof(Quartz), "performToolAction")]
     internal static class CobaltQuartzFix
     {
