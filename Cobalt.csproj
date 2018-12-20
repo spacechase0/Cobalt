@@ -42,6 +42,9 @@
       <HintPath>$(GamePath)\Mods\PyTK\PyTK.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Harmony">
+      <HintPath>$(GamePath)\smapi-internal\0Harmony.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\CobaltApi.cs" />
@@ -68,12 +71,6 @@
     <Content Include="cobalt-tools.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Harmony\Harmony\Harmony.csproj">
-      <Project>{69aee16a-b6e7-4642-8081-3928b32455df}</Project>
-      <Name>Harmony</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="2.0.2" />
